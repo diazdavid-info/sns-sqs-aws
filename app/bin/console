@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+use SnsSqsAws\app\console\SnsCreateHttpsSubscribeCommand;
+use SnsSqsAws\app\console\SnsCreateTopicCommand;
+use SnsSqsAws\app\console\SnsDeleteSubscriberCommand;
+use SnsSqsAws\app\console\SnsDeleteTopicCommand;
+use SnsSqsAws\app\console\SnsPublishMessageCommand;
+use Symfony\Component\Console\Application;
+
+require __DIR__ . '/../../vendor/autoload.php';
+
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__ . '/../../environments');
+$dotenv->load();
+
+$application = new Application();
+$application->add(new SnsCreateTopicCommand());
+$application->add(new SnsCreateHttpsSubscribeCommand());
+$application->add(new SnsPublishMessageCommand());
+$application->add(new SnsDeleteTopicCommand());
+$application->add(new SnsDeleteSubscriberCommand());
+$application->run();

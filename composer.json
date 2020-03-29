@@ -1,0 +1,25 @@
+{
+    "name": "daviddiaz/sns-sql-aws",
+    "authors": [
+        {
+            "name": "David Diaz",
+            "email": "diazdavid.info@gmail.com"
+        }
+    ],
+    "require": {
+        "symfony/console": "^5.0",
+        "vlucas/phpdotenv": "^4.1",
+        "aws/aws-sdk-php": "^3.133"
+    },
+    "autoload": {
+        "psr-4": {
+            "SnsSqsAws\\": "src/",
+            "SnsSqsAws\\app\\": "app/src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SnsSqsAws\\Tests\\": "tests/"
+        }
+    }
+}
