@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   php-apache:
-    build: .
+    image: diazdavid/dev-apache-php-7.4.3:latest
     container_name: php-sns-sqs-aws
     volumes:
       - ./:/var/www/html
