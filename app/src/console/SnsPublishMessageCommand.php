@@ -19,6 +19,7 @@ class SnsPublishMessageCommand extends Command
             ->setDescription('Publish Message')
             ->setHelp('This command allows you to publish a message')
             ->addArgument('ARN', InputArgument::REQUIRED, 'Code ARN')
+            ->addArgument('RoutingKey', InputArgument::REQUIRED, 'Subscribe Routing Key')
             ->addArgument('Message', InputArgument::REQUIRED, 'Message');
     }
 
@@ -26,6 +27,7 @@ class SnsPublishMessageCommand extends Command
     {
         $topic = $input->getArgument('ARN');
         $message = $input->getArgument('Message');
+        $routingKey = $input->getArgument('RoutingKey');
 
         $snsClient = new SnsClient([
             'profile' => 'default',
@@ -37,6 +39,12 @@ class SnsPublishMessageCommand extends Command
             $result = $snsClient->publish([
                 'Message' => $message,
                 'TopicArn' => $topic,
+                'MessageAttributes' => [
+                    'event' => [
+                        'DataType' => 'String',
+                        'StringValue' => $routingKey,
+                    ],
+                ],
             ]);
             var_dump($result);
             return 0;
