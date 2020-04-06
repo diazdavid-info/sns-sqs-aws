@@ -18,6 +18,7 @@ aws_secret_access_key = XXXXXXXX
 ## Comandos disponibles
 1. Crear un topic: `make console CMD="sns:create-topic <nombre del topic>"`
 2. Crear un subcriptor https a un topic: `make console CMD="sns:create-https-subscribe <arm del topic> <url del subcriptor>"`
-3. Publicar un mensaje: `make console CMD="sns:publish-message <arm del ropic> '<mensaje>'"`
-4. Borrar un subcriptor: `make console CMD="sns:delete-subscriber <arm del subcriptor>"`
-5. Borrar un topic: `make console CMD="sns:delete-topic <arm del topic>"`
+3. Añadir attributos al subcriptor: `make console CMD="sns:create-subscribe-attributes <arm del subcriptor> <routing key>"`
+4. Publicar un mensaje: `make console CMD="sns:publish-message <arm del ropic> <routing key subscribe> '<mensaje>'"`
+5. Borrar un subcriptor: `make console CMD="sns:delete-subscriber <arm del subcriptor>"`
+6. Borrar un topic: `make console CMD="sns:delete-topic <arm del topic>"`
